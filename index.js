@@ -1,6 +1,7 @@
 import express from "express";
-import { Sequelize } from "sequelize";
+import { Sequelize, DataTypes } from "sequelize";
 
+//configuração com o banco
 const sequelize = new Sequelize('Biblioteca2025', 'postgres', '1002', {
     host: 'localhost',
     port: 5432,
@@ -10,6 +11,32 @@ const sequelize = new Sequelize('Biblioteca2025', 'postgres', '1002', {
         freezeTableName: true
     }
   });
+  //mapeamento model editora
+  const User = sequelize.define(
+    'editora',
+    {
+      // Model attributes are defined here
+      ideditora: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      nomeeditora: {
+        type: DataTypes.STRING(60),
+        allowNull: false
+      },
+      cnpj:{
+        type: DataTypes.STRING(20),
+        allowNull: false
+      },
+      endereço:{
+        type: DataTypes.TEXT,
+        allowNull: true
+      },
+    },
+  );
+
   
   try {
     await sequelize.authenticate();
