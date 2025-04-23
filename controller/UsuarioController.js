@@ -38,4 +38,17 @@ async function excluir(req, res) {
     res.json(respostaBanco);
 }
 
-export default { listar, selecionar, inserir, alterar, excluir };
+async function senhaUsu(req, res) {
+    if (!idusuario) {
+        res.status(422).send('O parâmetro idusuario é obrigatório.');
+    }
+
+    if (!senha || senha.length < 6 || senha.length > 20) {
+        res.status(422).send('Senha invalida.');
+    }
+    const idusuario = req.params.id;
+    const senha = req.params.senha;
+}
+
+
+export default { listar, selecionar, inserir, alterar, excluir, senhaUsu };

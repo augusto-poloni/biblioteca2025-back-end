@@ -3,6 +3,7 @@ import Livro from "../model/LivroModel.js";
 import Usuario from "../model/UsuarioModel.js";
 import moment from 'moment';
 
+//Questão 12
 async function listar(req, res) {
     const respostaBanco = await Emprestimo.findAll();
     res.json(respostaBanco);
@@ -74,6 +75,11 @@ async function devolver(req, res) {
         { where: { idautor } });
     res.json(respostaBanco);
 }
+//Questão 13
+async function listarEmp(req, res) {
+    const emprestimo = req.params.emprestimo;
+    const respostaBanco = await emprestimo.findAll();
+    res.json(respostaBanco);
+}
 
-
-export default { listar, selecionar, emprestar, devolver };
+export default { listar, selecionar, emprestar, devolver, listarEmp };

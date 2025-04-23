@@ -12,9 +12,6 @@ async function selecionar(req, res) {
 }
 
 async function inserir(req, res) {
-    //    const nomeeditora = req.body.nomeeditora;
-    //    const cnpj = req.body.cnpj;
-    //    const endereco = req.body.endereco;
     const respostaBanco = await Editora.create(req.body);
     res.json(respostaBanco);
 }
